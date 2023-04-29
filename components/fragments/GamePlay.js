@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import HintCard from "../HintCard";
 import StateContext from "@/context/StateContext";
+import GameRules from "../GameRules";
 
 function GamePlay() {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const { fragmentState, setFragmentState } = useContext(StateContext);
+  const { fragmentState, setFragmentState, setGameRulesOpen } =
+    useContext(StateContext);
   return (
     <div className="pb-32 lg:pb-0">
       <p className="font-medium text-sm lg:text-base text-primary">
@@ -91,10 +93,14 @@ function GamePlay() {
       </div>
 
       <div className="mt-16">
-        <button className="text-sm font-semibold text-primary">
+        <button
+          onClick={() => setGameRulesOpen(true)}
+          className="text-sm font-semibold text-primary outline-none"
+        >
           View game rules
         </button>
       </div>
+      <GameRules />
     </div>
   );
 }
