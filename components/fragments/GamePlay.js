@@ -24,7 +24,7 @@ function GamePlay() {
       </div>
 
       <div className="lg:flex items-center mt-14">
-        <div className="h-16 w-96 bg-white shadow-lg shadow-black/[0.025] rounded-md flex items-center">
+        <div className="h-16 w-full lg:w-96 bg-white shadow-lg shadow-black/[0.025] rounded-md flex items-center">
           <input
             type="password"
             className="bg-transparent outline-none px-6 tracking-[5px] text-primary font-medium text-lg w-full"
