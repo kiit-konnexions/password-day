@@ -40,7 +40,7 @@ function GameRules() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-screen h-screen lg:w-[600px] lg:h-fit bg-primary px-6 py-10 lg:p-10 lg:rounded-xl">
+                <Dialog.Panel className="w-screen mt-auto lg:w-[600px] h-fit bg-primary px-6 py-10 lg:p-10 rounded-t-xl lg:rounded-xl">
                   <h1 className="text-3xl font-extrabold text-white">
                     Game Rules
                   </h1>
