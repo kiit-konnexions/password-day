@@ -5,14 +5,14 @@ function GamePlay() {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   return (
-    <div className="pb-32">
+    <div className="pb-32 lg:pb-0">
       <p className="font-medium text-sm lg:text-base text-primary">
         4th May 2023
       </p>
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
         World Password Day 2023
       </h1>
-      <p className="lg:max-w-[70%] leading-8 font-medium text-xs lg:text-sm mt-6 text-primary">
+      <p className="lg:max-w-[70%] leading-7 lg:leading-8 font-medium text-xs lg:text-sm mt-6 text-primary">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry&apos;s standard dummy text
         ever since the 1500s, when an unknown printer took a galley of type and
@@ -62,7 +62,7 @@ function GamePlay() {
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6"
+                class="w-5 h-5"
               >
                 <path
                   stroke-linecap="round"
