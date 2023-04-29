@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import HintCard from "../HintCard";
+import StateContext from "@/context/StateContext";
 
 function GamePlay() {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+  const { fragmentState, setFragmentState } = useContext(StateContext);
   return (
     <div className="pb-32 lg:pb-0">
       <p className="font-medium text-sm lg:text-base text-primary">
@@ -78,7 +80,12 @@ function GamePlay() {
             )}
           </button>
         </div>
-        <button className="h-16 w-full lg:w-28 text-sm bg-primary hover:bg-black text-white shadow-lg shadow-black/[0.025] rounded-md mt-5 lg:mt-0 lg:ml-6 transition-all duration-500">
+        <button
+          onClick={() => {
+            setFragmentState("congratulations");
+          }}
+          className="h-16 w-full lg:w-28 text-sm bg-primary hover:bg-black text-white shadow-lg shadow-black/[0.025] rounded-md mt-5 lg:mt-0 lg:ml-6 transition-all duration-500"
+        >
           Check
         </button>
       </div>

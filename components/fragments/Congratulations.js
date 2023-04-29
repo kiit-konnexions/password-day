@@ -1,6 +1,8 @@
-import React from "react";
+import StateContext from "@/context/StateContext";
+import React, { useContext } from "react";
 
 function Congratulations() {
+  const { fragmentState, setFragmentState } = useContext(StateContext);
   return (
     <div className="pb-32 lg:pb-0">
       <p className="font-medium text-sm lg:text-base text-primary">
@@ -32,9 +34,24 @@ function Congratulations() {
           id=""
         />
       </div>
-      <button className="w-full mt-12 lg:w-fit font-medium bg-primary active:bg-black lg:hover:bg-black px-10 text-sm text-white h-14 lg:h-16 rounded-full transition-all duration-500">
-        Save response
-      </button>
+      <div className="flex items-center space-x-7">
+        <button
+          onClick={() => {
+            setFragmentState("thankYou");
+          }}
+          className="w-fit mt-12 lg:w-fit font-medium bg-primary active:bg-black lg:hover:bg-black px-7 text-sm text-white h-12 lg:h-14 rounded-full transition-all duration-500"
+        >
+          Save response
+        </button>
+        <button
+          onClick={() => {
+            setFragmentState("gamePlay");
+          }}
+          className="w-fit mt-12 lg:w-fit text-sm font-medium"
+        >
+          Back to home
+        </button>
+      </div>
     </div>
   );
 }
