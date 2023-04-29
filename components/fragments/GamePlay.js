@@ -3,25 +3,27 @@ import HintCard from "../HintCard";
 
 function GamePlay() {
   return (
-    <div>
-      <p className="font-medium text-primary">4th May 2023</p>
-      <h1 className=" font-extrabold text-primary text-6xl mt-8">
+    <div className="pb-32">
+      <p className="font-medium text-sm lg:text-base text-primary">
+        4th May 2023
+      </p>
+      <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
         World Password Day 2023
       </h1>
-      <p className="lg:max-w-[70%] leading-8 font-medium text-sm mt-6 text-primary">
+      <p className="lg:max-w-[70%] leading-8 font-medium text-xs lg:text-sm mt-6 text-primary">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry&apos;s standard dummy text
         ever since the 1500s, when an unknown printer took a galley of type and
         scrambled it to make a type specimen book.
       </p>
-      <div className="w-fit gap-4 mt-8 grid lg:grid-cols-2">
+      <div className="w-fit gap-4 mt-8 grid grid-cols-2 lg:grid-cols-2">
         <HintCard />
         <HintCard />
         <HintCard />
         <HintCard />
       </div>
 
-      <div className="flex items-center mt-14">
+      <div className="lg:flex items-center mt-14">
         <div className="h-16 w-96 bg-white shadow-lg shadow-black/[0.025] rounded-md flex items-center">
           <input
             type="password"
@@ -45,7 +47,7 @@ function GamePlay() {
             </svg>
           </button>
         </div>
-        <button className="h-16 w-28 text-sm bg-primary hover:bg-black text-white shadow-lg shadow-black/[0.025] rounded-md ml-6 transition-all duration-500">
+        <button className="h-16 w-full lg:w-28 text-sm bg-primary hover:bg-black text-white shadow-lg shadow-black/[0.025] rounded-md mt-5 lg:mt-0 lg:ml-6 transition-all duration-500">
           Check
         </button>
       </div>
