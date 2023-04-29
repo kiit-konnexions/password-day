@@ -2,7 +2,7 @@ import React from "react";
 
 function HintCard() {
   return (
-    <div className="flex items-center hover:bg-primary/10 w-fit p-4 rounded-xl cursor-pointer transition-all duration-500">
+    <div className="flex items-center hover:bg-primary/10 lg:w-fit p-4 rounded-xl cursor-pointer transition-all duration-500 shrink-0">
       <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-white">
         <svg
           xmlns="http://www.w3.org/2000/svg"
