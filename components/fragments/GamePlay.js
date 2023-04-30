@@ -2,12 +2,24 @@ import React, { useContext, useState } from "react";
 import HintCard from "../HintCard";
 import StateContext from "@/context/StateContext";
 import GameRules from "../GameRules";
+import { toast } from "react-hot-toast";
 
-function GamePlay() {
-  const [password, setPassword] = useState("");
+function GamePlay({ password }) {
+  const [userInputPassword, setUserInputPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const { fragmentState, setFragmentState, setGameRulesOpen } =
     useContext(StateContext);
+
+  const checkIfCracked = () => {
+    if (userInputPassword.length === 0) {
+      toast.error("Please enter a password.");
+      return;
+    } else if (userInputPassword === password.correctAnswer) {
+      setFragmentState("congratulations");
+    } else {
+      toast.error("Oops! Wrong password. Try again.");
+    }
+  };
   return (
     <div className="pb-32 lg:pb-0">
       <p className="font-medium text-sm lg:text-base text-primary">
@@ -23,22 +35,28 @@ function GamePlay() {
         scrambled it to make a type specimen book.
       </p>
       <div className="lg:w-fit gap-4 mt-8 grid grid-cols-2 lg:grid-cols-2">
-        <HintCard />
-        <HintCard />
-        <HintCard />
-        <HintCard />
+        {password.hints.map((hint, index) => {
+          return <HintCard key={index} />;
+        })}
       </div>
 
-      <div className="lg:flex items-center mt-14">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          checkIfCracked();
+        }}
+        className="lg:flex items-center mt-14"
+      >
         <div className="h-16 w-full lg:w-96 bg-white shadow-lg shadow-black/[0.025] rounded-md flex items-center">
           <input
             type={visible ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={userInputPassword}
+            onChange={(e) => setUserInputPassword(e.target.value)}
             className="bg-transparent outline-none px-6 tracking-[5px] text-primary font-medium text-lg w-full"
             placeholder="••••••"
           />
           <button
+            type="button"
             onClick={() => {
               setVisible(!visible);
             }}
@@ -83,14 +101,12 @@ function GamePlay() {
           </button>
         </div>
         <button
-          onClick={() => {
-            setFragmentState("congratulations");
-          }}
+          type="submit"
           className="h-16 w-full lg:w-28 text-sm bg-primary hover:bg-black text-white shadow-lg shadow-black/[0.025] rounded-md mt-5 lg:mt-0 lg:ml-6 transition-all duration-500"
         >
           Check
         </button>
-      </div>
+      </form>
 
       <div className="mt-16">
         <button

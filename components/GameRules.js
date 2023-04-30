@@ -26,7 +26,7 @@ function GameRules() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/50" />
+            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-hidden">
@@ -40,16 +40,7 @@ function GameRules() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-screen mt-auto lg:w-[600px] h-fit bg-primary px-6 py-10 lg:p-10 rounded-t-xl lg:rounded-xl">
-                  <h1 className="text-3xl font-extrabold text-white">
-                    Game Rules
-                  </h1>
-                  <ul className="mt-10 list-disc text-white ml-4 space-y-3">
-                    <li className="pl-2">The game consists of 5 levels.</li>
-                    <li className="pl-2">The game consists of 5 levels.</li>
-                    <li className="pl-2">The game consists of 5 levels.</li>
-                    <li className="pl-2">The game consists of 5 levels.</li>
-                  </ul>
+                <Dialog.Panel className="w-screen mt-auto lg:mt-0 lg:w-[600px] h-fit bg-white px-6 py-10 lg:p-10 rounded-t-xl lg:rounded-xl">
                   <div className="mt-10 ml-auto">
                     <button
                       type="button"
