@@ -3,12 +3,17 @@ import HintCard from "../HintCard";
 import StateContext from "@/context/StateContext";
 import GameRules from "../GameRules";
 import { toast } from "react-hot-toast";
+import HintModal from "../HintModal";
 
 function GamePlay({ password }) {
   const [userInputPassword, setUserInputPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const { fragmentState, setFragmentState, setGameRulesOpen } =
-    useContext(StateContext);
+  const {
+    fragmentState,
+    setFragmentState,
+    setGameRulesOpen,
+    setHintModalOpen,
+  } = useContext(StateContext);
 
   const checkIfCracked = () => {
     if (userInputPassword.length === 0) {
@@ -36,7 +41,16 @@ function GamePlay({ password }) {
       </p>
       <div className="lg:w-fit gap-4 mt-8 grid grid-cols-2 lg:grid-cols-2">
         {password.hints.map((hint, index) => {
-          return <HintCard key={index} />;
+          return (
+            <div
+              key={index}
+              onClick={() => {
+                setHintModalOpen(true);
+              }}
+            >
+              <HintCard />
+            </div>
+          );
         })}
       </div>
 
@@ -116,6 +130,7 @@ function GamePlay({ password }) {
           View game rules
         </button>
       </div>
+      <HintModal />
       <GameRules />
     </div>
   );

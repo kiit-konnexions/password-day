@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 export default function App({ Component, pageProps }) {
   const [fragmentState, setFragmentState] = useState("gamePlay");
   const [gameRulesOpen, setGameRulesOpen] = useState(false);
+  const [hintModalOpen, setHintModalOpen] = useState(false);
 
   return (
     <StateContext.Provider
@@ -14,6 +15,8 @@ export default function App({ Component, pageProps }) {
         setFragmentState,
         gameRulesOpen,
         setGameRulesOpen,
+        hintModalOpen,
+        setHintModalOpen,
       }}
     >
       <Component {...pageProps} />
