@@ -14,13 +14,13 @@ function HintCard({ hint }) {
     const elapsed = current - previous;
 
     if (elapsed < msPerMinute) {
-      return Math.round(elapsed / 1000) + " seconds ago";
+      return Math.round(elapsed / 1000) + " secs ago";
     } else if (elapsed < msPerHour) {
       return Math.round(elapsed / msPerMinute) > 1
-        ? Math.round(elapsed / msPerMinute) + " minutes ago"
-        : Math.round(elapsed / msPerMinute) + " minute ago";
+        ? Math.round(elapsed / msPerMinute) + " mins ago"
+        : Math.round(elapsed / msPerMinute) + " min ago";
     } else if (elapsed < msPerDay) {
-      return Math.round(elapsed / msPerHour) + " hours ago";
+      return Math.round(elapsed / msPerHour) + " hrs ago";
     } else if (elapsed < msPerMonth) {
       return Math.round(elapsed / msPerDay) + " days ago";
     } else if (elapsed < msPerYear) {
@@ -38,7 +38,7 @@ function HintCard({ hint }) {
 
   return (
     <div className="flex items-center hover:bg-primary/10 lg:w-fit p-4 rounded-xl transition-all duration-500 shrink-0">
-      <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-white">
+      <div className="h-12 w-12 shrink-0 rounded-full bg-primary flex items-center justify-center text-white">
         {hint.published ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
