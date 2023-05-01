@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useState } from "react";
 import HintCard from "../HintCard";
 import StateContext from "@/context/StateContext";
@@ -29,9 +30,12 @@ function GamePlay({ password }) {
   };
   return (
     <div className="pb-32 lg:pb-0">
-      <p className="font-medium text-sm lg:text-base text-primary">
-        4th May 2023
-      </p>
+      <div className="flex items-center justify-between">
+        <p className="font-medium text-sm lg:text-base text-primary">
+          4th May 2023
+        </p>
+        <img src="/logo.png" className="h-10 lg:h-16" alt="" />
+      </div>
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8 leading-[1.5]">
         World Password Day 2023
       </h1>

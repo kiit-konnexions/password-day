@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import StateContext from "@/context/StateContext";
 import Link from "next/link";
 import React, { useContext } from "react";
@@ -7,9 +8,12 @@ function ThankYou() {
   const { fragmentState, setFragmentState } = useContext(StateContext);
   return (
     <div className="pb-32 lg:pb-0">
-      <p className="font-medium text-sm lg:text-base text-primary">
-        4th May 2023
-      </p>
+      <div className="flex items-center justify-between">
+        <p className="font-medium text-sm lg:text-base text-primary">
+          4th May 2023
+        </p>
+        <img src="/logo.png" className="h-10 lg:h-16" alt="" />
+      </div>
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
         Thank you !
       </h1>
