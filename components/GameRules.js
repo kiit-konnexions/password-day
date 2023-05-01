@@ -41,10 +41,23 @@ function GameRules() {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-screen mt-auto lg:mt-0 lg:w-[600px] h-fit bg-white overflow-hidden rounded-t-xl lg:rounded-xl">
-                  <div className="ml-auto p-10">
+                  <div className="ml-auto px-6 py-7 lg:p-7">
+                    <h1 className="font-bold text-2xl text-primary">
+                      Guidelines
+                    </h1>
+                    <p className="text-sm leading-6 mt-2">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Nemo, cupiditate?
+                    </p>
+                    <ul className="mt-6 pl-5 list-disc text-zinc-700 border-t pt-5 space-y-3 text-sm">
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
                     <button
                       type="button"
-                      className="inline-flex outline-none justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex outline-none justify-center rounded-md border border-transparent bg-primary text-white mt-8 lg:mt-10 px-4 py-3 text-sm font-medium w-full lg:w-fit"
                       onClick={closeModal}
                     >
                       Got it, thanks!
