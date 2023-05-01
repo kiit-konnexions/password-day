@@ -71,7 +71,7 @@ function HintCard({ hint }) {
           </svg>
         )}
       </div>
-      <div className="ml-4">
+      <div className="ml-3">
         <h1 className="font-medium text-primary">{hint.name}</h1>
         <p className="text-[10px] text-primary/80 mt-1">
           {hint.published ? timeDifference : "Coming soon"}
