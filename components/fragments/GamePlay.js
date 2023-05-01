@@ -32,7 +32,7 @@ function GamePlay({ password }) {
       <p className="font-medium text-sm lg:text-base text-primary">
         4th May 2023
       </p>
-      <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
+      <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8 leading-[1.5]">
         World Password Day 2023
       </h1>
       <p className="lg:max-w-[70%] leading-7 lg:leading-8 font-medium text-xs lg:text-sm mt-6 text-primary">
