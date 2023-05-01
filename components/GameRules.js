@@ -40,8 +40,8 @@ function GameRules() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-screen mt-auto lg:mt-0 lg:w-[600px] h-fit bg-white px-6 py-10 lg:p-10 rounded-t-xl lg:rounded-xl">
-                  <div className="mt-10 ml-auto">
+                <Dialog.Panel className="w-screen mt-auto lg:mt-0 lg:w-[600px] h-fit bg-white overflow-hidden rounded-t-xl lg:rounded-xl">
+                  <div className="ml-auto p-10">
                     <button
                       type="button"
                       className="inline-flex outline-none justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"

@@ -68,12 +68,12 @@ function HintModal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-screen mt-auto lg:mt-0 lg:w-[600px] h-fit bg-white rounded-t-xl lg:rounded-xl">
+                <Dialog.Panel className="w-screen mt-auto lg:mt-0 lg:w-[600px] h-fit bg-white rounded-t-xl lg:rounded-xl overflow-hidden">
                   <div
                     style={{
                       width: `${progressWidth}%`,
                     }}
-                    className={` h-1 bg-red-300 rounded-full`}
+                    className={`h-1 bg-primary/50 rounded-full`}
                   ></div>
                   <div className="mt-10 ml-auto">
                     <button
