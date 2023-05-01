@@ -20,6 +20,8 @@ export async function getServerSideProps() {
         hints {
           name
           description
+          publishedDateTime
+          published
           coverImage {
             url
           }

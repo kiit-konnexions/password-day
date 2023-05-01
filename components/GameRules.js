@@ -45,7 +45,7 @@ function GameRules() {
                     <h1 className="font-bold text-2xl text-primary">
                       Guidelines
                     </h1>
-                    <p className="text-sm leading-6 mt-2">
+                    <p className="text-sm leading-6 mt-2 text-zinc-600">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Nemo, cupiditate?
                     </p>

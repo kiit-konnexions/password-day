@@ -1,16 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import StateContext from "@/context/StateContext";
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 
 function HintModal() {
-  const { hintModalOpen, setHintModalOpen } = useContext(StateContext);
+  const { hintModalOpen, setHintModalOpen, hintModalData, setHintModalData } =
+    useContext(StateContext);
   const [progressWidth, setProgressWidth] = useState(0);
   let timeOut;
   function closeModal() {
     setHintModalOpen(false);
   }
-
   function openModal() {
     setHintModalOpen(true);
   }
@@ -21,7 +22,7 @@ function HintModal() {
     if (hintModalOpen) {
       if (progressWidth < 100) {
         timeOut = setTimeout(() => {
-          setProgressWidth(progressWidth + 0.2);
+          setProgressWidth(progressWidth + 0.1);
         }, 10);
       } else {
         setHintModalOpen(false);
@@ -68,17 +69,28 @@ function HintModal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-screen mt-auto lg:mt-0 lg:w-[600px] h-fit bg-white rounded-t-xl lg:rounded-xl overflow-hidden">
+                <Dialog.Panel className="w-screen mt-auto lg:mt-0 lg:w-[600px] h-fit bg-white rounded-t-xl lg:rounded-xl overflow-hidden relative">
                   <div
                     style={{
                       width: `${progressWidth}%`,
                     }}
-                    className={`h-1 bg-primary/50 rounded-full`}
+                    className={`h-1 bg-white rounded-full absolute top-0 inset-x-0`}
                   ></div>
-                  <div className="mt-10 ml-auto">
+                  <img
+                    src={hintModalData?.coverImage?.url}
+                    alt=""
+                    className="h-44 lg:h-60 w-full object-cover"
+                  />
+                  <div className="px-6 py-8">
+                    <h1 className="font-bold text-2xl text-primary">
+                      {hintModalData?.name}
+                    </h1>
+                    <p className="text-sm leading-7 mt-2 text-zinc-600">
+                      {hintModalData?.description}
+                    </p>
                     <button
                       type="button"
-                      className="inline-flex outline-none justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex outline-none justify-center rounded-md border border-transparent bg-primary text-white mt-8 lg:mt-10 px-4 py-3 text-sm font-medium w-full lg:w-fit"
                       onClick={closeModal}
                     >
                       Got it, thanks!

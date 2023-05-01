@@ -13,6 +13,8 @@ function GamePlay({ password }) {
     setFragmentState,
     setGameRulesOpen,
     setHintModalOpen,
+    hintModalData,
+    setHintModalData,
   } = useContext(StateContext);
 
   const checkIfCracked = () => {
@@ -39,16 +41,26 @@ function GamePlay({ password }) {
         ever since the 1500s, when an unknown printer took a galley of type and
         scrambled it to make a type specimen book.
       </p>
-      <div className="lg:w-fit gap-4 mt-8 grid grid-cols-2 lg:grid-cols-2">
+      <div className="lg:w-fit gap-0 mt-8 grid grid-cols-2 lg:grid-cols-2">
         {password.hints.map((hint, index) => {
           return (
             <div
+              className={`${
+                hint.published
+                  ? "cursor-pointer opacity-100"
+                  : "cursor-not-allowed opacity-50"
+              }`}
               key={index}
               onClick={() => {
-                setHintModalOpen(true);
+                if (hint.published) {
+                  setHintModalData(hint);
+                  setHintModalOpen(true);
+                } else {
+                  toast.error("Hint not yet published.");
+                }
               }}
             >
-              <HintCard />
+              <HintCard hint={hint} />
             </div>
           );
         })}

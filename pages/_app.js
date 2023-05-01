@@ -1,3 +1,4 @@
+import Loading from "@/components/Loading";
 import StateContext from "@/context/StateContext";
 import "@/styles/globals.css";
 import { useState } from "react";
@@ -7,6 +8,12 @@ export default function App({ Component, pageProps }) {
   const [fragmentState, setFragmentState] = useState("gamePlay");
   const [gameRulesOpen, setGameRulesOpen] = useState(false);
   const [hintModalOpen, setHintModalOpen] = useState(false);
+  const [hintModalData, setHintModalData] = useState({
+    image: "",
+    name: "",
+    description: "",
+  });
+  const [loading, setLoading] = useState(false);
 
   return (
     <StateContext.Provider
@@ -17,6 +24,10 @@ export default function App({ Component, pageProps }) {
         setGameRulesOpen,
         hintModalOpen,
         setHintModalOpen,
+        hintModalData,
+        setHintModalData,
+        loading,
+        setLoading,
       }}
     >
       <Component {...pageProps} />
@@ -36,6 +47,7 @@ export default function App({ Component, pageProps }) {
           duration: 5000,
         }}
       />
+      <Loading loading={loading} />
     </StateContext.Provider>
   );
 }
