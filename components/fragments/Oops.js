@@ -7,7 +7,7 @@ import Header from "../Header";
 function Oops() {
   const { fragmentState, setFragmentState } = useContext(StateContext);
   return (
-    <div className="pb-32 lg:pb-0">
+    <div className="pb-8 lg:pb-0">
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
         Oops !
       </h1>
@@ -23,17 +23,17 @@ function Oops() {
                 .share({
                   title: "Share with friends",
                   text: "I just cracked the password for the secret page of the website. Can you?",
-                  url: "https://password-day.vercel.app/",
+                  url: "https://passwordday.vercel.app/",
                 })
                 .then(() => {
                   toast.success("Shared successfully");
                 })
                 .catch(() => {
                   navigator.clipboard.writeText(
-                    "https://password-day.vercel.app/"
+                    "https://passwordday.vercel.app/"
                   );
                   toast.success(`
-                    I just cracked the password for the secret page of the website. Can you? \n https://password-day.vercel.app/
+                    I just cracked the password for the secret page of the website. Can you? \n https://passwordday.vercel.app/
                   `);
                 });
             } catch (error) {}

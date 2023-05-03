@@ -24,14 +24,17 @@ function GamePlay({ password }) {
     if (userInputPassword.length === 0) {
       toast.error("Please enter a password.");
       return;
-    } else if (userInputPassword.trim() === password.correctAnswer.trim()) {
+    } else if (
+      userInputPassword.toString().toLocaleLowerCase().trim() ===
+      password.correctAnswer.toString().toLowerCase().trim()
+    ) {
       setFragmentState("congratulations");
     } else {
       toast.error("Oops! Wrong password. Try again.");
     }
   };
   return (
-    <div className="pb-32 lg:pb-0">
+    <div className="pb-8 lg:pb-0">
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8 leading-[1.5]">
         World Password Day 2023
       </h1>
@@ -44,6 +47,14 @@ function GamePlay({ password }) {
         the password. Let&apos;s see if you can crack it. The top 3 people
         who&apos;ll crack it first will be rewarded!!! Good luck!!
       </p>
+      <div className="mt-16">
+        <button
+          onClick={() => setGameRulesOpen(true)}
+          className="text-sm font-semibold text-primary outline-none"
+        >
+          View game rules
+        </button>
+      </div>
       <div className="lg:w-fit lg:gap-4 mt-8 grid grid-cols-2 lg:grid-cols-3">
         {password.hints.map((hint, index) => {
           return (
@@ -137,14 +148,6 @@ function GamePlay({ password }) {
         </button>
       </form>
 
-      <div className="mt-16">
-        <button
-          onClick={() => setGameRulesOpen(true)}
-          className="text-sm font-semibold text-primary outline-none"
-        >
-          View game rules
-        </button>
-      </div>
       <HintModal />
       <GameRules />
     </div>

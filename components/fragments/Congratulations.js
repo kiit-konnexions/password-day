@@ -73,7 +73,7 @@ function Congratulations() {
     if (localStorage.getItem("sub-r") === "1") setFragmentState("oops");
   }, []);
   return (
-    <div className="pb-32 lg:pb-0">
+    <div className="pb-8 lg:pb-0">
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
         Congratulations !
       </h1>

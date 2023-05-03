@@ -9,7 +9,7 @@ import Header from "../Header";
 function ThankYou() {
   const { fragmentState, setFragmentState } = useContext(StateContext);
   return (
-    <div className="pb-32 lg:pb-0">
+    <div className="pb-8 lg:pb-0">
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
         Thank you !
       </h1>
@@ -37,12 +37,19 @@ function ThankYou() {
                 .share({
                   title: "Share with friends",
                   text: "I just cracked the password for the secret page of the website. Can you?",
-                  url: "https://password-day.vercel.app/",
+                  url: "https://passwordday.vercel.app/",
                 })
                 .then(() => {
                   toast.success("Shared successfully");
                 })
-                .catch(() => {});
+                .catch(() => {
+                  navigator.clipboard.writeText(
+                    "https://passwordday.vercel.app/"
+                  );
+                  toast.success(`
+                    I just cracked the password for the secret page of the website. Can you? \n https://passwordday.vercel.app/
+                  `);
+                });
             } catch (error) {}
           }}
           className="w-fit mt-12 lg:w-fit font-medium bg-primary active:bg-black lg:hover:bg-black px-7 text-sm text-white h-12 lg:h-14 rounded-full transition-all duration-500"
