@@ -1,6 +1,7 @@
 import StateContext from "@/context/StateContext";
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useContext, useEffect } from "react";
+import { toast } from "react-hot-toast";
 
 function GameStartsTomorrow() {
   const { gameStartsOpen, setGameStartsOpen } = useContext(StateContext);
@@ -96,7 +97,12 @@ function GameStartsTomorrow() {
                                 );
                                 toast.success("Copied to clipboard");
                               });
-                          } catch (error) {}
+                          } catch (error) {
+                            navigator.clipboard.writeText(
+                              `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle.. Can you crack it? \n https://passwordday.vercel.app/`
+                            );
+                            toast.success("Copied to clipboard");
+                          }
                         }}
                       >
                         Share with friends
