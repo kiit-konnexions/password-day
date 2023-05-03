@@ -9,6 +9,7 @@ import ThankYou from "@/components/fragments/ThankYou";
 import Oops from "@/components/fragments/Oops";
 import StateContext from "@/context/StateContext";
 import { client, gql } from "@/helper/graph";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,6 +52,35 @@ export default function Home({ passwords }) {
 
   return (
     <div className="h-screen w-screen fixed inset-0 overflow-hidden">
+      <Head>
+        <title>World Password Day 2023</title>
+        <meta
+          name="description"
+          content="Today is World Password Day, it's an effort to educate people about
+        the dangers of using weak passwords. On this occasion, KIIT and
+        Konnexions are celebrating it in a new fashion where we would empower
+        you to crack the puzzle."
+        />
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content="World Password Day 2023" />
+        <meta
+          property="og:description"
+          content="Today is World Password Day, it's an effort to educate people about
+        the dangers of using weak passwords. On this occasion, KIIT and
+        Konnexions are celebrating it in a new fashion where we would empower
+        you to crack the puzzle."
+        />
+        <meta
+          property="og:image"
+          content="https://world-password-day-2023.vercel.app/og.png"
+        />
+        <meta
+          property="og:url"
+          content="https://world-password-day-2023.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="World Password Day 2023" />
+      </Head>
       <div className="relative h-screen w-screen overflow-hidden">
         <img
           src="/lock.png"
