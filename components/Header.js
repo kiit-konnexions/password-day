@@ -4,7 +4,7 @@ import React from "react";
 function Header({ className }) {
   return (
     <div
-      className={`${className} flex items-center justify-between h-20 backdrop-blur z-30 px-6 lg:px-24`}
+      className={`${className} flex items-center justify-between h-16 lg:h-20 backdrop-blur z-30 px-6 lg:px-24`}
     >
       <p className="font-medium text-sm lg:text-base text-primary">
         4th May 2023
