@@ -66,7 +66,9 @@ function GameStartsTomorrow() {
                         : "Game has already ended"}
                     </h1>
                     <p className="text-sm leading-7 mt-2 text-zinc-600">
-                      Buckle up, the game is about to start! You can start
+                      On the occasion of World Password Day, KIIT and Konnexions
+                      are celebrating it in a new fashion where we would empower
+                      you to crack the puzzle. Can you crack it?
                     </p>
 
                     <div className="mt-6 font-poppins text-xs flex items-center">
