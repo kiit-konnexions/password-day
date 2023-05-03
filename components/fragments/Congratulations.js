@@ -14,11 +14,41 @@ function Congratulations() {
   const [name, setName] = useState("");
   const [instagram, setInstagram] = useState("");
 
+  const getListOfRevealedHints = async () => {
+    const query = gql`
+      query MyQuery {
+        passwords {
+          hints(where: { published: true }) {
+            id
+          }
+        }
+      }
+    `;
+
+    try {
+      const { passwords } = await client.request(query);
+      const revealedHints = passwords[0].hints.length;
+      return revealedHints;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
+
   const handleSubmit = async () => {
+    if (name.length == 0) {
+      toast.error("Enter a valid name");
+      return;
+    }
+    if (instagram.length == 0) {
+      toast.error("Enter a valid instagra id");
+      return;
+    }
     setLoading(true);
+    const revealedHints = await getListOfRevealedHints();
     const mutation = gql`
       mutation MyMutation {
-        createResponse(data: { name: "${name}", instagram: "${instagram}" }) {
+        createResponse(data: { name: "${name}", instagram: "${instagram}", hintsUsed: ${revealedHints} }) {
           id
         }
       }
@@ -70,11 +100,12 @@ function Congratulations() {
             id=""
           />
         </div>
-        <div className="mt-5 lg:mt-8 lg:w-[500px] h-14 lg:h-16 bg-white focus-within:shadow-2xl focus-within:shadow-black/[0.05] border border-transparent focus-within:border-[#133852] rounded-md transition-all">
+        <div className="mt-5 px-6 flex items-center lg:mt-8 lg:w-[500px] h-14 lg:h-16 bg-white focus-within:shadow-2xl focus-within:shadow-black/[0.05] border border-transparent focus-within:border-[#133852] rounded-md transition-all">
+          <span className="opacity-50">https://www.instagram.com/</span>
           <input
             type="text"
-            className="h-full w-full bg-transparent px-6 outline-none"
-            placeholder="@instgram_username"
+            className="h-full w-full bg-transparent outline-none"
+            placeholder="@username"
             value={instagram}
             onChange={(e) => setInstagram(e.target.value)}
             name=""
