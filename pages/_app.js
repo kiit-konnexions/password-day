@@ -20,9 +20,7 @@ export default function App({ Component, pageProps }) {
   const [fragmentState, setFragmentState] = useState("gamePlay");
   const [gameRulesOpen, setGameRulesOpen] = useState(false);
   const [hintModalOpen, setHintModalOpen] = useState(false);
-  const [gameStartsOpen, setGameStartsOpen] = useState(
-    getTodaysDate() == false ? true : false
-  );
+  const [gameStartsOpen, setGameStartsOpen] = useState(true);
   const [hintModalData, setHintModalData] = useState({
     image: "",
     name: "",
