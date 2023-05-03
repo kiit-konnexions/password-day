@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
-function Header() {
+function Header({ className }) {
   return (
-    <div className="flex items-center justify-between">
+    <div
+      className={`${className} flex items-center justify-between h-20 backdrop-blur z-30 px-6 lg:px-24`}
+    >
       <p className="font-medium text-sm lg:text-base text-primary">
         4th May 2023
       </p>

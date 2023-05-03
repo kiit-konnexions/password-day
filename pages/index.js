@@ -11,6 +11,7 @@ import StateContext from "@/context/StateContext";
 import { client, gql } from "@/helper/graph";
 import Head from "next/head";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -77,12 +78,13 @@ export default function Home({ passwords }) {
         <meta property="og:site_name" content="World Password Day 2023" />
       </Head>
       <div className="relative h-screen w-screen overflow-hidden">
+        <Header className="sticky top-0 inset-x-0" />
         <img
           src="/lock.png"
           className="absolute z-0 bottom-6 right-0 w-[250px] hidden lg:block"
           alt=""
         />
-        <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 py-6 lg:px-28 lg:py-10 font-poppins">
+        <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 lg:px-28 pt-16 lg:pt-24 pb-24 font-poppins">
           {fragmentState === "gamePlay" ? (
             <GamePlay password={password} />
           ) : fragmentState === "congratulations" ? (

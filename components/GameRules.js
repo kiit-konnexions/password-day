@@ -49,7 +49,7 @@ function GameRules() {
                       Here is how the game functions:
                     </p>
                     <ul className="mt-6 pl-5 list-disc text-zinc-700 border-t pt-5 space-y-3 text-sm">
-                      <li>The hints will be accessible every three hours.</li>
+                      <li>The hints will be accessible every one hour.</li>
                       <li>
                         Each clue&apos;s initial letter moves you one step
                         closer to the password.

@@ -74,7 +74,6 @@ function Congratulations() {
   }, []);
   return (
     <div className="pb-32 lg:pb-0">
-      <Header />
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
         Congratulations !
       </h1>

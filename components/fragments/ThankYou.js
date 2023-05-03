@@ -10,7 +10,6 @@ function ThankYou() {
   const { fragmentState, setFragmentState } = useContext(StateContext);
   return (
     <div className="pb-32 lg:pb-0">
-      <Header />
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
         Thank you !
       </h1>

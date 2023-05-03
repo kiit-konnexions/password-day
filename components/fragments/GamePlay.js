@@ -32,7 +32,6 @@ function GamePlay({ password }) {
   };
   return (
     <div className="pb-32 lg:pb-0">
-      <Header />
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8 leading-[1.5]">
         World Password Day 2023
       </h1>
