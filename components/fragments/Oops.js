@@ -1,17 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import StateContext from "@/context/StateContext";
 import React, { useContext } from "react";
+import Footer from "../Footer";
+import Header from "../Header";
 
 function Oops() {
   const { fragmentState, setFragmentState } = useContext(StateContext);
   return (
     <div className="pb-32 lg:pb-0">
-      <div className="flex items-center justify-between">
-        <p className="font-medium text-sm lg:text-base text-primary">
-          4th May 2023
-        </p>
-        <img src="/logo.png" className="h-10 lg:h-16" alt="" />
-      </div>
+      <Header />
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8">
         Oops !
       </h1>

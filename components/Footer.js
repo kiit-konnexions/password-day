@@ -10,14 +10,17 @@ function Footer() {
         <div className="h-[1px] w-32 bg-primary"></div>
       </div>
       <div className="flex items-center justify-center text-xl space-x-4 mt-5 text-primary">
-        <Link target="_blank" href="/">
+        <Link
+          target="_blank"
+          href="https://instagram.com/kiitkonnexions?igshid=YmMyMTA2M2Y="
+        >
           <i class="bi bi-instagram"></i>
         </Link>
-        <Link target="_blank" href="/">
+        <Link
+          target="_blank"
+          href="https://www.linkedin.com/company/konnexions-kiit/"
+        >
           <i class="bi bi-linkedin"></i>
-        </Link>
-        <Link target="_blank" href="/">
-          <i class="bi bi-facebook"></i>
         </Link>
       </div>
     </div>
