@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background-color: #b5d5e2;
 }
