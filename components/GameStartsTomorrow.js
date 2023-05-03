@@ -56,7 +56,7 @@ function GameStartsTomorrow() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-screen mt-auto lg:mt-0 lg:w-[600px] h-fit bg-white overflow-hidden rounded-t-xl lg:rounded-xl">
+                <Dialog.Panel className="w-[90%] lg:mt-0 lg:w-[600px] h-fit bg-white overflow-hidden rounded-xl lg:rounded-xl">
                   <div className="ml-auto px-6 py-7 lg:p-7">
                     <h1 className="font-bold text-2xl text-primary">
                       {getTodaysDate() == 0
@@ -73,33 +73,41 @@ function GameStartsTomorrow() {
                       <i class="bi bi-calendar-check text-xl mr-3"></i>
                       <span>04th May 2023, 11:00 AM onwards</span>
                     </div>
-                    <button
-                      type="button"
-                      className="inline-flex outline-none justify-center rounded-md border border-transparent bg-primary text-white mt-8 lg:mt-10 px-4 py-3 text-sm font-medium w-full lg:w-fit"
-                      onClick={() => {
-                        try {
-                          navigator
-                            .share({
-                              title: "Share with friends",
-                              text: "I just cracked the password for the secret page of the website. Can you?",
-                              url: "https://passwordday.vercel.app/",
-                            })
-                            .then(() => {
-                              toast.success("Shared successfully");
-                            })
-                            .catch(() => {
-                              navigator.clipboard.writeText(
-                                "https://passwordday.vercel.app/"
-                              );
-                              toast.success(`
+                    <div className="flex mt-8 lg:mt-10 items-center space-x-8">
+                      <button
+                        type="button"
+                        className="inline-flex outline-none justify-center rounded-md border border-transparent bg-primary text-white px-4 py-3 text-sm font-medium w-fit"
+                        onClick={() => {
+                          try {
+                            navigator
+                              .share({
+                                title: "Share with friends",
+                                text: "I just cracked the password for the secret page of the website. Can you?",
+                                url: "https://passwordday.vercel.app/",
+                              })
+                              .then(() => {
+                                toast.success("Shared successfully");
+                              })
+                              .catch(() => {
+                                navigator.clipboard.writeText(
+                                  "https://passwordday.vercel.app/"
+                                );
+                                toast.success(`
                     I just cracked the password for the secret page of the website. Can you? \n https://passwordday.vercel.app/
                   `);
-                            });
-                        } catch (error) {}
-                      }}
-                    >
-                      Share with friends
-                    </button>
+                              });
+                          } catch (error) {}
+                        }}
+                      >
+                        Share with friends
+                      </button>
+                      <button
+                        onClick={closeModal}
+                        className="text-primary text-sm font-medium"
+                      >
+                        Close
+                      </button>
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
