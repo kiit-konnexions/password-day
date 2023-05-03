@@ -10,6 +10,7 @@ import Oops from "@/components/fragments/Oops";
 import StateContext from "@/context/StateContext";
 import { client, gql } from "@/helper/graph";
 import Head from "next/head";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -84,7 +85,7 @@ export default function Home({ passwords }) {
           className="absolute z-0 bottom-6 right-0 w-[250px] hidden lg:block"
           alt=""
         />
-        <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 py-6 lg:px-28 lg:py-16 font-poppins">
+        <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 py-6 lg:px-28 lg:py-10 font-poppins">
           {fragmentState === "gamePlay" ? (
             <GamePlay password={password} />
           ) : fragmentState === "congratulations" ? (
@@ -94,6 +95,7 @@ export default function Home({ passwords }) {
           ) : fragmentState === "oops" ? (
             <Oops />
           ) : null}
+          <Footer />
         </div>
       </div>
     </div>
