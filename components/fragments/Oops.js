@@ -22,7 +22,7 @@ function Oops() {
               navigator
                 .share({
                   title: "Share with friends",
-                  text: "I just cracked the password for the secret page of the website. Can you?",
+                  text: `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle. Can you crack it?`,
                   url: "https://passwordday.vercel.app/",
                 })
                 .then(() => {
@@ -30,13 +30,16 @@ function Oops() {
                 })
                 .catch(() => {
                   navigator.clipboard.writeText(
-                    "https://passwordday.vercel.app/"
+                    `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle.. Can you crack it?\nhttps://passwordday.vercel.app/`
                   );
-                  toast.success(`
-                    I just cracked the password for the secret page of the website. Can you? \n https://passwordday.vercel.app/
-                  `);
+                  toast.success("Copied to clipboard");
                 });
-            } catch (error) {}
+            } catch (error) {
+              navigator.clipboard.writeText(
+                `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle.. Can you crack it?\nhttps://passwordday.vercel.app/`
+              );
+              toast.success("Copied to clipboard");
+            }
           }}
           className="w-fit mt-12 lg:w-fit font-medium bg-primary active:bg-black lg:hover:bg-black px-7 text-sm text-white h-12 lg:h-14 rounded-full transition-all duration-500"
         >

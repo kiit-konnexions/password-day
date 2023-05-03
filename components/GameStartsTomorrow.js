@@ -93,13 +93,13 @@ function GameStartsTomorrow() {
                               })
                               .catch(() => {
                                 navigator.clipboard.writeText(
-                                  `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle.. Can you crack it? \n https://passwordday.vercel.app/`
+                                  `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle.. Can you crack it?\nhttps://passwordday.vercel.app/`
                                 );
                                 toast.success("Copied to clipboard");
                               });
                           } catch (error) {
                             navigator.clipboard.writeText(
-                              `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle.. Can you crack it? \n https://passwordday.vercel.app/`
+                              `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle.. Can you crack it?\nhttps://passwordday.vercel.app/`
                             );
                             toast.success("Copied to clipboard");
                           }
