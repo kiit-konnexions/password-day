@@ -74,12 +74,13 @@ function HintModal() {
                     style={{
                       width: `${progressWidth}%`,
                     }}
-                    className={`h-1 bg-white rounded-full absolute top-0 inset-x-0`}
+                    className={`h-1 bg-white rounded-full absolute top-0 inset-x-0 z-10`}
                   ></div>
+                  <div className="absolute top-0 h-20 bg-gradient-to-b from-black/50 to-transparent z-0 inset-x-0 w-full"></div>
                   <img
                     src={hintModalData?.coverImage?.url}
                     alt=""
-                    className="h-44 lg:h-60 w-full object-cover"
+                    className="h-56 lg:h-60 w-full object-cover"
                   />
                   <div className="px-6 py-8">
                     <h1 className="font-bold text-2xl text-primary">

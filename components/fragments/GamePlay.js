@@ -40,12 +40,12 @@ function GamePlay({ password }) {
         World Password Day 2023
       </h1>
       <p className="lg:max-w-[70%] leading-7 lg:leading-8 font-medium text-xs lg:text-sm mt-6 text-primary">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-        ever since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+        Each year on the first Thursday in May, World Password Day promotes
+        better password habits. Passwords are critical gatekeepers to our
+        digital identities, allowing us to access online shopping, dating,
+        banking, social media, private work, and life communications.
       </p>
-      <div className="lg:w-fit gap-0 mt-8 grid grid-cols-2 lg:grid-cols-2">
+      <div className="lg:w-fit lg:gap-4 mt-8 grid grid-cols-2 lg:grid-cols-3">
         {password.hints.map((hint, index) => {
           return (
             <div
