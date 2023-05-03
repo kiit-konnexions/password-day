@@ -82,7 +82,7 @@ function GameStartsTomorrow() {
                             navigator
                               .share({
                                 title: "Share with friends",
-                                text: "I just cracked the password for the secret page of the website. Can you?",
+                                text: `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle. Can you crack it?`,
                                 url: "https://passwordday.vercel.app/",
                               })
                               .then(() => {
@@ -90,11 +90,9 @@ function GameStartsTomorrow() {
                               })
                               .catch(() => {
                                 navigator.clipboard.writeText(
-                                  "https://passwordday.vercel.app/"
+                                  `On the occasion of World Password Day, KIIT and Konnexions are celebrating it in a new fashion where we would empower you to crack the puzzle.. Can you crack it? \n https://passwordday.vercel.app/`
                                 );
-                                toast.success(`
-                    I just cracked the password for the secret page of the website. Can you? \n https://passwordday.vercel.app/
-                  `);
+                                toast.success("Copied to clipboard");
                               });
                           } catch (error) {}
                         }}
