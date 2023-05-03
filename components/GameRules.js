@@ -46,14 +46,19 @@ function GameRules() {
                       Guidelines
                     </h1>
                     <p className="text-sm leading-6 mt-2 text-zinc-600">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Nemo, cupiditate?
+                      Here is how the game functions:
                     </p>
                     <ul className="mt-6 pl-5 list-disc text-zinc-700 border-t pt-5 space-y-3 text-sm">
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
+                      <li>The tips will be accessible every three hours.</li>
+                      <li>
+                        Each clue&apos;s initial letter moves you one step
+                        closer to the password.
+                      </li>
+                      <li>
+                        The hints are specific to KIIT and the KIIT
+                        neighbourhood.
+                      </li>
+                      <li>You can attempt multiple times.</li>
                     </ul>
                     <button
                       type="button"
