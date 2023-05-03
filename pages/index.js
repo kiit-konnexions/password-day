@@ -71,7 +71,7 @@ export default function Home({ passwords }) {
         Konnexions are celebrating it in a new fashion where we would empower
         you to crack the puzzle."
         />
-        <meta property="og:image" content="/crackthecode.png" />
+        <meta property="og:image" content="/crackthecode.jpg" />
         <meta property="og:url" content="https://passwordday.vercel.app/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="World Password Day 2023" />
