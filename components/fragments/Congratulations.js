@@ -100,7 +100,9 @@ function Congratulations() {
           />
         </div>
         <div className="mt-5 px-6 flex items-center lg:mt-8 lg:w-[500px] h-14 lg:h-16 bg-white focus-within:shadow-2xl focus-within:shadow-black/[0.05] border border-transparent focus-within:border-[#133852] rounded-md transition-all">
-          <span className="opacity-50">https://www.instagram.com/</span>
+          <span className="opacity-50 hidden lg:block">
+            https://www.instagram.com/
+          </span>
           <input
             type="text"
             className="h-full w-full bg-transparent outline-none"
