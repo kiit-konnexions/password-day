@@ -5,10 +5,24 @@ import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, pageProps }) {
+  const getTodaysDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    if (dd.toString() == "03") {
+      return false;
+    } else if (dd.toString() == "04") {
+      return true;
+    } else {
+      return -1;
+    }
+  };
+
   const [fragmentState, setFragmentState] = useState("gamePlay");
   const [gameRulesOpen, setGameRulesOpen] = useState(false);
   const [hintModalOpen, setHintModalOpen] = useState(false);
-  const [gameStartsOpen, setGameStartsOpen] = useState(true);
+  const [gameStartsOpen, setGameStartsOpen] = useState(
+    getTodaysDate() == false ? true : false
+  );
   const [hintModalData, setHintModalData] = useState({
     image: "",
     name: "",
