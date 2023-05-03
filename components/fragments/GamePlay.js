@@ -40,10 +40,13 @@ function GamePlay({ password }) {
         World Password Day 2023
       </h1>
       <p className="lg:max-w-[70%] leading-7 lg:leading-8 font-medium text-xs lg:text-sm mt-6 text-primary">
-        Each year on the first Thursday in May, World Password Day promotes
-        better password habits. Passwords are critical gatekeepers to our
-        digital identities, allowing us to access online shopping, dating,
-        banking, social media, private work, and life communications.
+        Today is World Password Day, it&apos;s an effort to educate people about
+        the dangers of using weak passwords. On this occasion, KIIT and
+        Konnexions are celebrating it in a new fashion where we would empower
+        you to crack the puzzle. The caveat is, in the interval of 1 hour new
+        hints will appear on the website which will bring you one step closer to
+        the password. Let&apos;s see if you can crack it. The top 3 people
+        who&apos;ll crack it first will be rewarded!!! Good luck!!
       </p>
       <div className="lg:w-fit lg:gap-4 mt-8 grid grid-cols-2 lg:grid-cols-3">
         {password.hints.map((hint, index) => {
