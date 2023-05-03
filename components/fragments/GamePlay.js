@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import HintModal from "../HintModal";
 import Footer from "../Footer";
 import Header from "../Header";
+import { client, gql } from "@/helper/graph";
 
 function GamePlay({ password }) {
   const [userInputPassword, setUserInputPassword] = useState("");
@@ -20,7 +21,33 @@ function GamePlay({ password }) {
     setHintModalData,
   } = useContext(StateContext);
 
-  const checkIfCracked = () => {
+  const getListOfRevealedHints = async () => {
+    const query = gql`
+      query MyQuery {
+        passwords {
+          hints(where: { published: true }) {
+            id
+          }
+        }
+      }
+    `;
+
+    try {
+      const { passwords } = await client.request(query);
+      const revealedHints = passwords[0].hints.length;
+      return revealedHints;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
+
+  const checkIfCracked = async () => {
+    const r = await getListOfRevealedHints();
+    if (r === 0) {
+      toast.error("Game hasn't started yet.");
+      return;
+    }
     if (userInputPassword.length === 0) {
       toast.error("Please enter a password.");
       return;
