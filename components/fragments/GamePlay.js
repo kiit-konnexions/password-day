@@ -19,6 +19,8 @@ function GamePlay({ password }) {
     setHintModalOpen,
     hintModalData,
     setHintModalData,
+    loading,
+    setLoading,
   } = useContext(StateContext);
 
   const getListOfRevealedHints = async () => {
@@ -43,21 +45,26 @@ function GamePlay({ password }) {
   };
 
   const checkIfCracked = async () => {
+    setLoading(true);
     const r = await getListOfRevealedHints();
     if (r === 0) {
       toast.error("Game hasn't started yet.");
+      setLoading(false);
       return;
     }
     if (userInputPassword.length === 0) {
       toast.error("Please enter a password.");
+      setLoading(false);
       return;
     } else if (
       userInputPassword.toString().toLocaleLowerCase().trim() ===
       password.correctAnswer.toString().toLowerCase().trim()
     ) {
       setFragmentState("congratulations");
+      setLoading(false);
     } else {
       toast.error("Oops! Wrong password. Try again.");
+      setLoading(false);
     }
   };
   return (
