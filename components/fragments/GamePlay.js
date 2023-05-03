@@ -22,7 +22,7 @@ function GamePlay({ password }) {
     if (userInputPassword.length === 0) {
       toast.error("Please enter a password.");
       return;
-    } else if (userInputPassword === password.correctAnswer) {
+    } else if (userInputPassword.trim() === password.correctAnswer.trim()) {
       setFragmentState("congratulations");
     } else {
       toast.error("Oops! Wrong password. Try again.");
