@@ -60,7 +60,7 @@ function GameStartsTomorrow() {
                   <div className="ml-auto px-6 py-7 lg:p-7">
                     <h1 className="font-bold text-2xl text-primary">
                       {getTodaysDate() == 0
-                        ? "Game starts today"
+                        ? "Game starts at 11am"
                         : getTodaysDate() == 1
                         ? "Game starts tomorrow 🎊"
                         : "Game has already ended"}
