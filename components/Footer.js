@@ -6,7 +6,9 @@ function Footer() {
     <div className="mt-16">
       <div className="flex items-center justify-center space-x-3">
         <div className="h-[1px] w-32 bg-primary"></div>
-        <span className="text-xs font-semibold text-primary">FOLLOW US</span>
+        <span className="text-xs font-semibold text-primary whitespace-nowrap">
+          FOLLOW US
+        </span>
         <div className="h-[1px] w-32 bg-primary"></div>
       </div>
       <div className="flex items-center justify-center text-xl space-x-4 mt-5 text-primary">
