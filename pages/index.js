@@ -71,10 +71,7 @@ export default function Home({ passwords }) {
         Konnexions are celebrating it in a new fashion where we would empower
         you to crack the puzzle."
         />
-        <meta
-          property="og:image"
-          content="https://media.istockphoto.com/id/1363430976/photo/password-online-form-cyber-security-concept-image.jpg?b=1&s=170667a&w=0&k=20&c=I_2d_2g19BTYJ3jSjofAeDYZ3zyleWjfIQLAnFxsk1s="
-        />
+        <meta property="og:image" content="/crackthecode.png" />
         <meta property="og:url" content="https://passwordday.vercel.app/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="World Password Day 2023" />
