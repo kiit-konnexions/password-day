@@ -23,6 +23,22 @@ function GamePlay({ password }) {
     setLoading,
   } = useContext(StateContext);
 
+  const getCorrectPassword = async () => {
+    const query = gql`
+      query MyQuery {
+        passwords {
+          correctAnswer
+        }
+      }
+    `;
+
+    try {
+      const { passwords } = await client.request(query);
+      return passwords[0].correctAnswer;
+    } catch (error) {
+      return null;
+    }
+  };
   const getListOfRevealedHints = async () => {
     const query = gql`
       query MyQuery {
@@ -58,7 +74,7 @@ function GamePlay({ password }) {
       return;
     } else if (
       userInputPassword.toString().toLocaleLowerCase().trim() ===
-      password.correctAnswer.toString().toLowerCase().trim()
+      getCorrectPassword().toString().toLocaleLowerCase().trim()
     ) {
       setFragmentState("congratulations");
       setLoading(false);

@@ -20,7 +20,6 @@ export async function getServerSideProps() {
   const query = gql`
     query MyQuery {
       passwords {
-        correctAnswer
         hints {
           name
           description
