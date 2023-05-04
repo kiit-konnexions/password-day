@@ -34,7 +34,8 @@ function GamePlay({ password }) {
 
     try {
       const { passwords } = await client.request(query);
-      return passwords[0].correctAnswer;
+      console.log(passwords[0].correctAnswer);
+      return passwords[0].correctAnswer.toString().toLocaleLowerCase().trim();
     } catch (error) {
       return null;
     }
@@ -74,7 +75,7 @@ function GamePlay({ password }) {
       return;
     } else if (
       userInputPassword.toString().toLocaleLowerCase().trim() ===
-      getCorrectPassword().toString().toLocaleLowerCase().trim()
+      (await getCorrectPassword())
     ) {
       setFragmentState("congratulations");
       setLoading(false);
