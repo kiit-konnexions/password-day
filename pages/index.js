@@ -20,35 +20,35 @@ export default function Home({}) {
   const { fragmentState, setFragmentState } = useContext(StateContext);
   const [password, setPassword] = useState(null);
 
-  const getPasswords = async () => {
-    const query = gql`
-      query MyQuery {
-        passwords {
-          hints {
-            name
-            description
-            publishedDateTime
-            published
-            coverImage {
-              url
-            }
-          }
-        }
-      }
-    `;
-    try {
-      const { passwords } = await client.request(query);
-      setPassword(passwords[0]);
-    } catch (error) {
-      setPassword(null);
-    }
-  };
+  //   const getPasswords = async () => {
+  //     const query = gql`
+  //       query MyQuery {
+  //         passwords {
+  //           hints {
+  //             name
+  //             description
+  //             publishedDateTime
+  //             published
+  //             coverImage {
+  //               url
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `;
+  //     try {
+  //       const { passwords } = await client.request(query);
+  //       setPassword(passwords[0]);
+  //     } catch (error) {
+  //       setPassword(null);
+  //     }
+  //   };
 
-  useEffect(() => {
-    (async () => {
-      password == null && (await getPasswords());
-    })();
-  }, []);
+  //   useEffect(() => {
+  //     (async () => {
+  //       password == null && (await getPasswords());
+  //     })();
+  //   }, []);
 
   return (
     <div className="h-screen w-screen fixed inset-0 overflow-hidden">
