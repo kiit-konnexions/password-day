@@ -106,7 +106,7 @@ function Congratulations() {
           <input
             type="text"
             className="h-full w-full bg-transparent outline-none"
-            placeholder="@username"
+            placeholder="@instagram_username"
             value={instagram}
             onChange={(e) => setInstagram(e.target.value)}
             name=""
