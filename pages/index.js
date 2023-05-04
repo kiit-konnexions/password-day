@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import HintCard from "@/components/HintCard";
 import GamePlay from "@/components/fragments/GamePlay";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Congratulations from "@/components/fragments/Congratulations";
 import ThankYou from "@/components/fragments/ThankYou";
 import Oops from "@/components/fragments/Oops";
@@ -16,41 +16,39 @@ import GameStartsTomorrow from "@/components/GameStartsTomorrow";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export async function getServerSideProps() {
-  const query = gql`
-    query MyQuery {
-      passwords {
-        hints {
-          name
-          description
-          publishedDateTime
-          published
-          coverImage {
-            url
+export default function Home({}) {
+  const { fragmentState, setFragmentState } = useContext(StateContext);
+  const [password, setPassword] = useState(null);
+
+  const getPasswords = async () => {
+    const query = gql`
+      query MyQuery {
+        passwords {
+          hints {
+            name
+            description
+            publishedDateTime
+            published
+            coverImage {
+              url
+            }
           }
         }
       }
+    `;
+    try {
+      const { passwords } = await client.request(query);
+      setPassword(passwords[0]);
+    } catch (error) {
+      setPassword(null);
     }
-  `;
-  try {
-    const { passwords } = await client.request(query);
-    return {
-      props: {
-        passwords,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        passwords: [],
-      },
-    };
-  }
-}
+  };
 
-export default function Home({ passwords }) {
-  const { fragmentState, setFragmentState } = useContext(StateContext);
-  const [password, setPassword] = useState(passwords[0]);
+  useEffect(() => {
+    (async () => {
+      await getPasswords();
+    })();
+  });
 
   return (
     <div className="h-screen w-screen fixed inset-0 overflow-hidden">
@@ -77,27 +75,31 @@ export default function Home({ passwords }) {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="World Password Day 2023" />
       </Head>
-      <div className="relative h-screen w-screen overflow-hidden">
-        <Header className="sticky top-0 inset-x-0" />
-        <img
-          src="/lock.png"
-          className="absolute z-0 bottom-6 right-0 w-[250px] hidden lg:block"
-          alt=""
-        />
-        <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 lg:px-28 pt-16 lg:pt-24 pb-32 lg:pb-44 font-poppins">
-          {fragmentState === "gamePlay" ? (
-            <GamePlay password={password} />
-          ) : fragmentState === "congratulations" ? (
-            <Congratulations />
-          ) : fragmentState === "thankYou" ? (
-            <ThankYou />
-          ) : fragmentState === "oops" ? (
-            <Oops />
-          ) : null}
-          <Footer />
-        </div>
-      </div>
-      <GameStartsTomorrow />
+      {password != null && (
+        <>
+          <div className="relative h-screen w-screen overflow-hidden">
+            <Header className="sticky top-0 inset-x-0" />
+            <img
+              src="/lock.png"
+              className="absolute z-0 bottom-6 right-0 w-[250px] hidden lg:block"
+              alt=""
+            />
+            <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 lg:px-28 pt-16 lg:pt-24 pb-32 lg:pb-44 font-poppins">
+              {fragmentState === "gamePlay" ? (
+                <GamePlay password={password} />
+              ) : fragmentState === "congratulations" ? (
+                <Congratulations />
+              ) : fragmentState === "thankYou" ? (
+                <ThankYou />
+              ) : fragmentState === "oops" ? (
+                <Oops />
+              ) : null}
+              <Footer />
+            </div>
+          </div>
+          <GameStartsTomorrow />
+        </>
+      )}
     </div>
   );
 }
