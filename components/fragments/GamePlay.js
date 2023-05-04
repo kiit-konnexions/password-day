@@ -34,7 +34,7 @@ function GamePlay({ password }) {
 
     try {
       const { passwords } = await client.request(query);
-      return window.atob(passwords[0].correctAnswer.toString());
+      return window.atob(window.atob(passwords[0].correctAnswer.toString()));
     } catch (error) {
       return null;
     }
