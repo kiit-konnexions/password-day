@@ -45,10 +45,12 @@ export default function Home({}) {
   };
 
   useEffect(() => {
+    console.log(window.btoa("oracle"));
+    console.log(window.atob("b3JhY2xl"));
     (async () => {
-      await getPasswords();
+      password == null && (await getPasswords());
     })();
-  });
+  }, []);
 
   return (
     <div className="h-screen w-screen fixed inset-0 overflow-hidden">

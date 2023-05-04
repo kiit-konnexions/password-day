@@ -34,7 +34,7 @@ function GamePlay({ password }) {
 
     try {
       const { passwords } = await client.request(query);
-      return passwords[0].correctAnswer.toString().toLocaleLowerCase().trim();
+      return window.atob(passwords[0].correctAnswer.toString());
     } catch (error) {
       return null;
     }
@@ -82,6 +82,8 @@ function GamePlay({ password }) {
       toast.error("Oops! Wrong password. Try again.");
       setLoading(false);
     }
+
+    console.log(await getCorrectPassword());
   };
   return (
     <div className="pb-8 lg:pb-0">
