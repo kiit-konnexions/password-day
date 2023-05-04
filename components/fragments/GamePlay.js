@@ -82,8 +82,6 @@ function GamePlay({ password }) {
       toast.error("Oops! Wrong password. Try again.");
       setLoading(false);
     }
-
-    console.log(await getCorrectPassword());
   };
   return (
     <div className="pb-8 lg:pb-0">
