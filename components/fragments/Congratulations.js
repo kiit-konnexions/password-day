@@ -99,18 +99,23 @@ function Congratulations() {
             id=""
           />
         </div>
-        <div className="mt-5 px-6 flex items-center lg:mt-8 lg:w-[500px] h-14 lg:h-16 bg-white focus-within:shadow-2xl focus-within:shadow-black/[0.05] border border-transparent focus-within:border-[#133852] rounded-md transition-all">
-          <span className="opacity-50 hidden lg:block">
+        <div
+          onClick={() => {
+            document.getElementById("instagram_id").focus();
+          }}
+          className="mt-5 px-6 flex items-center lg:mt-8 lg:w-[500px] h-14 lg:h-16 bg-white focus-within:shadow-2xl focus-within:shadow-black/[0.05] border border-transparent focus-within:border-[#133852] rounded-md transition-all"
+        >
+          <span className="opacity-75 hidden lg:block">
             https://www.instagram.com/
           </span>
           <input
             type="text"
+            id="instagram_id"
             className="h-full w-full bg-transparent outline-none"
             placeholder="@instagram_username"
             value={instagram}
             onChange={(e) => setInstagram(e.target.value)}
             name=""
-            id=""
           />
         </div>
         <div className="flex items-center space-x-7">
