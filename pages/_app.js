@@ -1,32 +1,51 @@
 import Loading from "@/components/Loading";
 import StateContext from "@/context/StateContext";
+import { client, gql } from "@/helper/graph";
 import "@/styles/globals.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, pageProps }) {
-  const getTodaysDate = () => {
-    const today = new Date();
-    const dd = String(today.getDate()).padStart(2, "0");
-    if (dd.toString() == "03") {
-      return false;
-    } else if (dd.toString() == "04") {
-      return true;
-    } else {
-      return -1;
+  const getListOfRevealedHints = async () => {
+    const query = gql`
+      query MyQuery {
+        passwords {
+          hints(where: { published: true }) {
+            id
+          }
+        }
+      }
+    `;
+
+    try {
+      const { passwords } = await client.request(query);
+      const revealedHints = passwords[0].hints.length;
+      return revealedHints;
+    } catch (error) {
+      console.log(error);
+      return null;
     }
   };
 
   const [fragmentState, setFragmentState] = useState("gamePlay");
   const [gameRulesOpen, setGameRulesOpen] = useState(false);
   const [hintModalOpen, setHintModalOpen] = useState(false);
-  const [gameStartsOpen, setGameStartsOpen] = useState(true);
+  const [gameStartsOpen, setGameStartsOpen] = useState(false);
   const [hintModalData, setHintModalData] = useState({
     image: "",
     name: "",
     description: "",
   });
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const r = await getListOfRevealedHints();
+      if (r === 0) {
+        setGameStartsOpen(true);
+      }
+    })();
+  }, []);
 
   return (
     <StateContext.Provider
