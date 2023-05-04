@@ -34,7 +34,6 @@ function GamePlay({ password }) {
 
     try {
       const { passwords } = await client.request(query);
-      console.log(passwords[0].correctAnswer);
       return passwords[0].correctAnswer.toString().toLocaleLowerCase().trim();
     } catch (error) {
       return null;
