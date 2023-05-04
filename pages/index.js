@@ -101,6 +101,19 @@ export default function Home({}) {
           <GameStartsTomorrow />
         </>
       )}
+      <div className="relative h-screen w-screen overflow-hidden">
+        <Header className="sticky top-0 inset-x-0" />
+        <img
+          src="/lock.png"
+          className="absolute z-0 bottom-6 right-0 w-[250px] hidden lg:block"
+          alt=""
+        />
+        <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 lg:px-28 pt-16 lg:pt-24 pb-32 lg:pb-44 font-poppins">
+          <Ended />
+
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 }
