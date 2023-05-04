@@ -45,8 +45,6 @@ export default function Home({}) {
   };
 
   useEffect(() => {
-    console.log(window.btoa("oracle"));
-    console.log(window.atob("b3JhY2xl"));
     (async () => {
       password == null && (await getPasswords());
     })();
