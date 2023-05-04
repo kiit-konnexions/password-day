@@ -38,14 +38,14 @@ export default function App({ Component, pageProps }) {
   });
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      const r = await getListOfRevealedHints();
-      if (r === 0) {
-        setGameStartsOpen(true);
-      }
-    })();
-  }, []);
+  //   useEffect(() => {
+  //     (async () => {
+  //       const r = await getListOfRevealedHints();
+  //       if (r === 0) {
+  //         setGameStartsOpen(true);
+  //       }
+  //     })();
+  //   }, []);
 
   return (
     <StateContext.Provider
