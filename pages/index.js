@@ -1,7 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import HintCard from "@/components/HintCard";
 import GamePlay from "@/components/fragments/GamePlay";
 import { useContext, useEffect, useState } from "react";
 import Congratulations from "@/components/fragments/Congratulations";
@@ -13,6 +12,7 @@ import Head from "next/head";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import GameStartsTomorrow from "@/components/GameStartsTomorrow";
+import Ended from "@/components/fragments/Ended";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -85,7 +85,8 @@ export default function Home({}) {
               alt=""
             />
             <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 lg:px-28 pt-16 lg:pt-24 pb-32 lg:pb-44 font-poppins">
-              {fragmentState === "gamePlay" ? (
+              <Ended />
+              {/* {fragmentState === "gamePlay" ? (
                 <GamePlay password={password} />
               ) : fragmentState === "congratulations" ? (
                 <Congratulations />
@@ -93,7 +94,7 @@ export default function Home({}) {
                 <ThankYou />
               ) : fragmentState === "oops" ? (
                 <Oops />
-              ) : null}
+              ) : null} */}
               <Footer />
             </div>
           </div>
