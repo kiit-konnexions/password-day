@@ -29,6 +29,7 @@ function GamePlay({ hints, totalHints }) {
       },
       {
         headers: {
+          "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
           "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
           "Content-type": "application/json",
