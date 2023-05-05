@@ -20,14 +20,17 @@ export async function getServerSideProps() {
   const todaysDate = `${date.getDate()}`;
   const todaysMonth = `${date.getMonth() + 1}`;
 
-  if (todaysDate === "4" && todaysMonth === "5") {
-    const hints = await axios.get(process.env.NEXT_PUBLIC_BACKEND_URI, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-        "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
-      },
-    });
+  if (todaysDate === "5" && todaysMonth === "5") {
+    const hints = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URI}/hints`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
+        },
+      }
+    );
     return {
       props: {
         data: {

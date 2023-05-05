@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useContext, useState } from "react";
-import HintCard from "../HintCard";
 import StateContext from "@/context/StateContext";
-import GameRules from "../GameRules";
 import { toast } from "react-hot-toast";
+import GameRules from "../GameRules";
 import HintModal from "../HintModal";
+import HintCard from "../HintCard";
+import axios from "axios";
 
 function GamePlay({ hints, totalHints }) {
   const [userInputPassword, setUserInputPassword] = useState("");
@@ -20,7 +21,23 @@ function GamePlay({ hints, totalHints }) {
     setLoading,
   } = useContext(StateContext);
 
-  const checkIfCracked = async () => {};
+  const checkIfCracked = async () => {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_URI}/check`,
+      {
+        password: userInputPassword,
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
+          "content-type": "application/json",
+        },
+      }
+    );
+    console.log(response);
+  };
 
   return (
     <div className="pb-8 lg:pb-0">
