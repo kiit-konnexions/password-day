@@ -20,7 +20,7 @@ export async function getServerSideProps() {
   const todaysDate = `${date.getDate()}`;
   const todaysMonth = `${date.getMonth() + 1}`;
 
-  if (todaysDate === "5" && todaysMonth === "5") {
+  if (todaysDate === "4" && todaysMonth === "5") {
     const hints = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_URI}/hints`,
       {
