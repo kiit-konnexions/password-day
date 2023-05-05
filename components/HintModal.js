@@ -77,7 +77,10 @@ function HintModal() {
                     className={`h-1 bg-sky-500 rounded-full absolute top-0 inset-x-0 z-10`}
                   ></div>
                   <div className="px-6 py-8">
-                    <h1 className="font-bold text-2xl text-primary">
+                    <div className="w-fit bg-sky-50 text-sky-600 font-medium rounded-full px-4 py-1 text-xs font-poppins">
+                      Hint
+                    </div>
+                    <h1 className="font-bold text-2xl text-primary mt-5">
                       {hintModalData?.name}
                     </h1>
                     <p className="text-sm leading-7 mt-2 text-zinc-600">

@@ -43,6 +43,9 @@ function HintCard({ hint }) {
       </div>
       <div className="ml-3">
         <h1 className="font-medium text-primary">{hint.name}</h1>
+        <p className="text-[12px] text-primary/70 font-medium mt-1">
+          {hint.published ? "Click to view" : "Coming soon"}
+        </p>
       </div>
     </div>
   );
