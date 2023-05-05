@@ -1,11 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import StateContext from "@/context/StateContext";
-import { client, gql } from "@/helper/graph";
 import React, { useContext, useLayoutEffect, useState } from "react";
-import { toast } from "react-hot-toast";
-import Footer from "../Footer";
-import Header from "../Header";
 
 function Congratulations() {
   const { fragmentState, setFragmentState, loading, setLoading } =
@@ -14,60 +10,7 @@ function Congratulations() {
   const [name, setName] = useState("");
   const [instagram, setInstagram] = useState("");
 
-  const getListOfRevealedHints = async () => {
-    const query = gql`
-      query MyQuery {
-        passwords {
-          hints(where: { published: true }) {
-            id
-          }
-        }
-      }
-    `;
-
-    try {
-      const { passwords } = await client.request(query);
-      const revealedHints = passwords[0].hints.length;
-      return revealedHints;
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
-  };
-
-  const handleSubmit = async () => {
-    if (name.length == 0) {
-      toast.error("Enter a valid name");
-      return;
-    }
-    if (instagram.length == 0) {
-      toast.error("Enter a valid instagra id");
-      return;
-    }
-    setLoading(true);
-    const revealedHints = await getListOfRevealedHints();
-    const mutation = gql`
-      mutation MyMutation {
-        createResponse(data: { name: "${name}", instagram: "${instagram}", hintsUsed: ${revealedHints} }) {
-          id
-        }
-      }
-    `;
-
-    try {
-      const { createResponse } = await client.request(mutation);
-      if (!createResponse) throw new Error("Something went wrong");
-      setLoading(false);
-      setFragmentState("thankYou");
-      localStorage.setItem("sub-r", "1");
-    } catch (error) {
-      setLoading(false);
-      let message = error.message;
-      if (error.message.includes("instagram"))
-        message = "Instagram is already registered";
-      toast.error(message);
-    }
-  };
+  const handleSubmit = async () => {};
 
   useLayoutEffect(() => {
     if (localStorage.getItem("sub-r") === "1") setFragmentState("oops");

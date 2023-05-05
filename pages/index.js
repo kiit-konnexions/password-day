@@ -7,48 +7,51 @@ import Congratulations from "@/components/fragments/Congratulations";
 import ThankYou from "@/components/fragments/ThankYou";
 import Oops from "@/components/fragments/Oops";
 import StateContext from "@/context/StateContext";
-import { client, gql } from "@/helper/graph";
 import Head from "next/head";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import GameStartsTomorrow from "@/components/GameStartsTomorrow";
 import Ended from "@/components/fragments/Ended";
+import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({}) {
-  const { fragmentState, setFragmentState } = useContext(StateContext);
-  const [password, setPassword] = useState(null);
+export async function getServerSideProps() {
+  const date = new Date();
+  const todaysDate = `${date.getDate()}`;
+  const todaysMonth = `${date.getMonth() + 1}`;
 
-  //   const getPasswords = async () => {
-  //     const query = gql`
-  //       query MyQuery {
-  //         passwords {
-  //           hints {
-  //             name
-  //             description
-  //             publishedDateTime
-  //             published
-  //             coverImage {
-  //               url
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `;
-  //     try {
-  //       const { passwords } = await client.request(query);
-  //       setPassword(passwords[0]);
-  //     } catch (error) {
-  //       setPassword(null);
-  //     }
-  //   };
+  if (todaysDate === "4" && todaysMonth === "5") {
+    const hints = await axios.get(process.env.NEXT_PUBLIC_BACKEND_URI, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      },
+    });
+    return {
+      props: {
+        data: {
+          code: 200,
+          hints: hints.data.hints,
+          totalHints: hints.data.totalHints,
+        },
+      },
+    };
+  } else {
+    return {
+      props: {
+        data: {
+          code: 201,
+          hints: null,
+          totalHints: null,
+        },
+      },
+    };
+  }
+}
 
-  //   useEffect(() => {
-  //     (async () => {
-  //       password == null && (await getPasswords());
-  //     })();
-  //   }, []);
+export default function Home({ data }) {
+  const { fragmentState } = useContext(StateContext);
+  const [active, setActive] = useState(data.code === 200 ? true : false);
 
   return (
     <div className="h-screen w-screen fixed inset-0 overflow-hidden">
@@ -75,7 +78,34 @@ export default function Home({}) {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="World Password Day 2023" />
       </Head>
-      {password != null && (
+      {active ? (
+        <>
+          {data != null && (
+            <>
+              <div className="relative h-screen w-screen overflow-hidden">
+                <Header className="sticky top-0 inset-x-0" />
+                <img
+                  src="/lock.png"
+                  className="absolute z-0 bottom-6 right-0 w-[250px] hidden lg:block"
+                  alt=""
+                />
+                <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 lg:px-28 pt-16 lg:pt-24 pb-32 lg:pb-44 font-poppins">
+                  {fragmentState === "gamePlay" ? (
+                    <GamePlay hints={data.hints} />
+                  ) : fragmentState === "congratulations" ? (
+                    <Congratulations />
+                  ) : fragmentState === "thankYou" ? (
+                    <ThankYou />
+                  ) : fragmentState === "oops" ? (
+                    <Oops />
+                  ) : null}
+                  <Footer />
+                </div>
+              </div>
+            </>
+          )}
+        </>
+      ) : (
         <>
           <div className="relative h-screen w-screen overflow-hidden">
             <Header className="sticky top-0 inset-x-0" />
@@ -86,34 +116,11 @@ export default function Home({}) {
             />
             <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 lg:px-28 pt-16 lg:pt-24 pb-32 lg:pb-44 font-poppins">
               <Ended />
-              {/* {fragmentState === "gamePlay" ? (
-                <GamePlay password={password} />
-              ) : fragmentState === "congratulations" ? (
-                <Congratulations />
-              ) : fragmentState === "thankYou" ? (
-                <ThankYou />
-              ) : fragmentState === "oops" ? (
-                <Oops />
-              ) : null} */}
               <Footer />
             </div>
           </div>
-          <GameStartsTomorrow />
         </>
       )}
-      <div className="relative h-screen w-screen overflow-hidden">
-        <Header className="sticky top-0 inset-x-0" />
-        <img
-          src="/lock.png"
-          className="absolute z-0 bottom-6 right-0 w-[250px] hidden lg:block"
-          alt=""
-        />
-        <div className="absolute z-10 inset-0 h-screen w-screen overflow-y-auto px-6 lg:px-28 pt-16 lg:pt-24 pb-32 lg:pb-44 font-poppins">
-          <Ended />
-
-          <Footer />
-        </div>
-      </div>
     </div>
   );
 }

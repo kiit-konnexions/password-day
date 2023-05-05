@@ -2,42 +2,12 @@ import StateContext from "@/context/StateContext";
 import React, { useContext, useEffect, useState } from "react";
 
 function HintCard({ hint }) {
-  const [timeDifference, setTimeDifference] = useState("");
-
-  // calculate time difference between current time and hint updated time
-  const timeDiff = (current, previous) => {
-    const msPerMinute = 60 * 1000;
-    const msPerHour = msPerMinute * 60;
-    const msPerDay = msPerHour * 24;
-    const msPerMonth = msPerDay * 30;
-    const msPerYear = msPerDay * 365;
-    const elapsed = current - previous;
-
-    if (elapsed < msPerMinute) {
-      return Math.round(elapsed / 1000) + " secs ago";
-    } else if (elapsed < msPerHour) {
-      return Math.round(elapsed / msPerMinute) > 1
-        ? Math.round(elapsed / msPerMinute) + " mins ago"
-        : Math.round(elapsed / msPerMinute) + " min ago";
-    } else if (elapsed < msPerDay) {
-      return Math.round(elapsed / msPerHour) + " hrs ago";
-    } else if (elapsed < msPerMonth) {
-      return Math.round(elapsed / msPerDay) + " days ago";
-    } else if (elapsed < msPerYear) {
-      return Math.round(elapsed / msPerMonth) + " months ago";
-    } else {
-      return Math.round(elapsed / msPerYear) + " years ago";
-    }
-  };
-
-  useEffect(() => {
-    if (hint.published) {
-      setTimeDifference(timeDiff(new Date(), new Date(hint.publishedDateTime)));
-    }
-  }, [timeDifference]);
-
   return (
-    <div className="flex items-center hover:bg-primary/10 lg:w-fit p-4 rounded-xl transition-all duration-500 shrink-0">
+    <div
+      className={`${
+        hint ? "opacity-100" : "opacity-50"
+      } flex items-center hover:bg-primary/10 lg:w-fit p-4 rounded-xl transition-all duration-500 shrink-0`}
+    >
       <div className="h-12 w-12 shrink-0 rounded-full bg-primary flex items-center justify-center text-white">
         {hint.published ? (
           <svg
@@ -73,9 +43,6 @@ function HintCard({ hint }) {
       </div>
       <div className="ml-3">
         <h1 className="font-medium text-primary">{hint.name}</h1>
-        <p className="text-[10px] text-primary/80 mt-1">
-          {hint.published ? timeDifference : "Coming soon"}
-        </p>
       </div>
     </div>
   );

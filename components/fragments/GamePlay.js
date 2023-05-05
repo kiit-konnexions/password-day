@@ -5,11 +5,8 @@ import StateContext from "@/context/StateContext";
 import GameRules from "../GameRules";
 import { toast } from "react-hot-toast";
 import HintModal from "../HintModal";
-import Footer from "../Footer";
-import Header from "../Header";
-import { client, gql } from "@/helper/graph";
 
-function GamePlay({ password }) {
+function GamePlay({ hints, totalHints }) {
   const [userInputPassword, setUserInputPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const {
@@ -23,66 +20,8 @@ function GamePlay({ password }) {
     setLoading,
   } = useContext(StateContext);
 
-  const getCorrectPassword = async () => {
-    const query = gql`
-      query MyQuery {
-        passwords {
-          correctAnswer
-        }
-      }
-    `;
+  const checkIfCracked = async () => {};
 
-    try {
-      const { passwords } = await client.request(query);
-      return window.atob(window.atob(passwords[0].correctAnswer.toString()));
-    } catch (error) {
-      return null;
-    }
-  };
-  const getListOfRevealedHints = async () => {
-    const query = gql`
-      query MyQuery {
-        passwords {
-          hints(where: { published: true }) {
-            id
-          }
-        }
-      }
-    `;
-
-    try {
-      const { passwords } = await client.request(query);
-      const revealedHints = passwords[0].hints.length;
-      return revealedHints;
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
-  };
-
-  const checkIfCracked = async () => {
-    setLoading(true);
-    const r = await getListOfRevealedHints();
-    if (r === 0) {
-      toast.error("Game hasn't started yet.");
-      setLoading(false);
-      return;
-    }
-    if (userInputPassword.length === 0) {
-      toast.error("Please enter a password.");
-      setLoading(false);
-      return;
-    } else if (
-      userInputPassword.toString().toLocaleLowerCase().trim() ===
-      (await getCorrectPassword())
-    ) {
-      setFragmentState("congratulations");
-      setLoading(false);
-    } else {
-      toast.error("Oops! Wrong password. Try again.");
-      setLoading(false);
-    }
-  };
   return (
     <div className="pb-8 lg:pb-0">
       <h1 className="font-extrabold text-primary text-4xl lg:text-6xl mt-8 leading-[1.5]">
@@ -106,7 +45,7 @@ function GamePlay({ password }) {
         </button>
       </div>
       <div className="lg:w-fit lg:gap-4 mt-8 grid grid-cols-2 lg:grid-cols-3">
-        {password.hints.map((hint, index) => {
+        {hints.map((hint, index) => {
           return (
             <div
               className={`${
