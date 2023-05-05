@@ -23,7 +23,7 @@ function GamePlay({ hints, totalHints }) {
 
   const checkIfCracked = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URI}/check`,
+      `https://0405.vercel.app/check`,
       {
         password: userInputPassword,
       },
@@ -35,7 +35,7 @@ function GamePlay({ hints, totalHints }) {
         },
       }
     );
-    console.log(response);
+    alert(response.data.status);
   };
 
   return (
